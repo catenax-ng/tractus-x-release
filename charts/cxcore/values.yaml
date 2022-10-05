@@ -2,4 +2,4 @@ portal-frontend:
   enabled: true
 
 portal-backend:
-  enabled: true
+  enabled: false
