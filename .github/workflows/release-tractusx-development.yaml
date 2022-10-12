@@ -93,14 +93,18 @@ jobs:
 
           #add if needed --url string
           helm repo index --merge $WORK_DIR/charts/index.yaml charts
-      
-      - name: push resources        
-        run: | 
-          git config user.name tractusx-robot
-          git config user.email tractusx-robot@github.com
-          git add -A
-          git commit -m "build: test build"          
-          git push
+          
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+
+#      - name: push resources        
+#        run: | 
+#          git config user.name tractusx-robot
+#          git config user.email tractusx-robot@github.com
+#          git add -A
+#          git commit -m "build: test build"          
+#          git push
           
 #          if ! git diff --cached --exit-code; then
 #            echo "Changes have been detected, update index file"
@@ -111,7 +115,3 @@ jobs:
 #            echo "No changes have been detected since last build, nothing to publish"
 #          fi
           
-#      - name: Run chart-releaser
-#        uses: helm/chart-releaser-action@v1.4.0
-#        env:
-#          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
