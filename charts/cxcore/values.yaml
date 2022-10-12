@@ -3,6 +3,12 @@ portal-frontend:
 
 portal-backend:
   enabled: false
+  pgadmin4:
+    nameOverride: "portal-backend-pgadmin4"
+    fullnameOverride: "portal-backend-pgadmin4"
+  postgresql:
+      nameOverride: "portal-backend-postgresql"
+      fullnameOverride: "portal-backend-postgresql"
 
 bpdm:
   enabled: true
@@ -12,16 +18,36 @@ daps:
 
 centralidp:
   enabled: true
+  keycloak:
+    nameOverride: "centralidp-keycloak"
+    fullnameOverride: "centralidp-keycloak"
+    postgresql:
+      nameOverride: "centralidp-postgresql"
+      fullnameOverride: "centralidp-postgresql"
 
 sharedidp:
   enabled: true
+  keycloak:
+    nameOverride: "sharedidp-keycloak"
+    fullnameOverride: "sharedidp-keycloak"
+    postgresql:
+      nameOverride: "sharedidp-postgresql"
+      fullnameOverride: "sharedidp-postgresql"
 
 managed-identity-wallets:
   enabled: true
   # for testing without vault
   isLocal: true
+  postgresql:
+    nameOverride: "managed-identity-wallets-postgresql"
+    fullnameOverride: "managed-identity-wallets-postgresql"
+  certificate:
+      host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
 
 sldt-registry:
   enabled: true
+  postgresql:
+    nameOverride: "sldt-registry-postgresql"
+    fullnameOverride: "sldt-registry-postgresql"
   registry:
     idpClientId: ""
