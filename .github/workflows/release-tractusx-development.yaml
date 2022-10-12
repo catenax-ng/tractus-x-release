@@ -39,51 +39,53 @@ jobs:
         with:
           version: v3.9.1
       
+      - name: Install yq
+        run:
+          apt-get install yq
+      
       - name: collect helm resources
         id: collectHelm
-        uses: mikefarah/yq@master
-        with:
-          cmd: |
-            pwd
-            
-            WORK_DIR="charts/tractusx-development"
+        run: |
+          pwd
 
-            if [ ! -d $WORK_DIR/charts ]
-            then
-                mkdir $WORK_DIR/charts
-            fi 
+          WORK_DIR="charts/tractusx-development"
 
-            for product_index_file in $(cat $WORK_DIR/product-chart-index.yaml | yq '.product-charts[].url')
-            do  
-                echo "getting product chart index file at: $product_index_file"
-                curl -L -o $WORK_DIR/act-product.yaml $product_index_file
+          if [ ! -d $WORK_DIR/charts ]
+          then
+              mkdir $WORK_DIR/charts
+          fi 
 
-                for chart in $(cat $WORK_DIR/act-product.yaml | yq ".entries | keys" | sed 's/- //g')
-                do 
-                    echo "processing chart: $chart"
-                    if [ ! -d $WORK_DIR/charts/$chart ]
-                    then
-                        mkdir $WORK_DIR/charts/$chart
-                    fi 
+          for product_index_file in $(cat $WORK_DIR/product-chart-index.yaml | yq '.product-charts[].url')
+          do  
+              echo "getting product chart index file at: $product_index_file"
+              curl -L -o $WORK_DIR/act-product.yaml $product_index_file
 
-                    for url in $(cat $WORK_DIR/act-product.yaml | yq ".entries.$chart[].urls[]")
-                    do
-                        echo "processing $url"
+              for chart in $(cat $WORK_DIR/act-product.yaml | yq ".entries | keys" | sed 's/- //g')
+              do 
+                  echo "processing chart: $chart"
+                  if [ ! -d $WORK_DIR/charts/$chart ]
+                  then
+                      mkdir $WORK_DIR/charts/$chart
+                  fi 
 
-                        filename=$(basename $url)
-                        if [ ! -f $WORK_DIR/charts/$chart/$filename ]
-                        then
-                            echo "getting file: $filename"
-                            curl -L -o $WORK_DIR/charts/$chart/$filename $url
-                        fi
-                    done 
-                done
-            done
+                  for url in $(cat $WORK_DIR/act-product.yaml | yq ".entries.$chart[].urls[]")
+                  do
+                      echo "processing $url"
 
-            rm $WORK_DIR/act-product.yaml
+                      filename=$(basename $url)
+                      if [ ! -f $WORK_DIR/charts/$chart/$filename ]
+                      then
+                          echo "getting file: $filename"
+                          curl -L -o $WORK_DIR/charts/$chart/$filename $url
+                      fi
+                  done 
+              done
+          done
 
-            #add if needed --url string
-            helm repo index --merge $WORK_DIR/charts/index.yaml charts
+          rm $WORK_DIR/act-product.yaml
+
+          #add if needed --url string
+          helm repo index --merge $WORK_DIR/charts/index.yaml charts
 
       
 #      - name: push index file        
