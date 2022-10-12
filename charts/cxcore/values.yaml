@@ -22,7 +22,7 @@ centralidp:
     nameOverride: "centralidp-keycloak"
     # fullnameOverride: "centralidp"
     postgresql:
-      enabled: true      
+      enabled: true
       primary:
         name: "primary"
       readReplicas:
