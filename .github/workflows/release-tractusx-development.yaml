@@ -93,16 +93,15 @@ jobs:
 
           #add if needed --url string
           helm repo index --merge $WORK_DIR/charts/index.yaml charts
-
       
-#      - name: push index file        
-#        run: | 
-#          git config user.name github-actions
-#          git config user.email github-actions@github.com
-#          git add .
-#          git commit -m "build: ${{ steps.index.outputs.chart_version }}"          
-#          git push
-#          git add -A
+      - name: push resources        
+        run: | 
+          git config user.name tractusx-robot
+          git config user.email tractusx-robot@github.com
+          git add -A
+          git commit -m "build: test build"          
+          git push
+          
 #          if ! git diff --cached --exit-code; then
 #            echo "Changes have been detected, update index file"
 #            git commit -m "build: "
