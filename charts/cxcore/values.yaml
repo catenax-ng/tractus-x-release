@@ -36,11 +36,12 @@ sharedidp:
 
 managed-identity-wallets:
   enabled: true
-  # for testing without vault
+  # vault is used if isLocal is true
   isLocal: true
   postgresql:
     nameOverride: "managed-identity-wallets-postgresql"
     fullnameOverride: "managed-identity-wallets-postgresql"
+  # ingress can't be disabled
   certificate:
       host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
 
@@ -50,4 +51,5 @@ sldt-registry:
     nameOverride: "sldt-registry-postgresql"
     fullnameOverride: "sldt-registry-postgresql"
   registry:
+    # not set by default, but throws error
     idpClientId: ""
