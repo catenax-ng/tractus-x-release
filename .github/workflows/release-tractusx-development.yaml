@@ -51,6 +51,8 @@ jobs:
         run: |
           pwd
 
+          ls -la
+          
           WORK_DIR="charts/tractusx-development"
 
           if [ ! -d $WORK_DIR/charts ]
