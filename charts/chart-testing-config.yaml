@@ -19,3 +19,10 @@
 # ********************************************************************************/
 
 validate-maintainers: false
+chart-repos:
+  - product-portal-cd=https://catenax-ng.github.io/product-portal-cd/
+  - product-bpdm=https://catenax-ng.github.io/product-bpdm/
+  - product-daps=https://catenax-ng.github.io/product-DAPS/
+  - product-portal-iam=https://catenax-ng.github.io/product-portal-iam/
+  - product-core-managed-identity-wallets-cd=https://catenax-ng.github.io/product-core-managed-identity-wallets-cd/
+  - tractusx=https://www.eclipse.org/tractusx/charts/
