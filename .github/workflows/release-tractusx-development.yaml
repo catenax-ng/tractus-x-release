@@ -41,7 +41,7 @@ jobs:
       
       - name: Install yq
         run:
-          apt-get install yq
+          sudo apt-get install yq
       
       - name: collect helm resources
         id: collectHelm
