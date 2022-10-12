@@ -21,8 +21,8 @@ centralidp:
   keycloak:
     nameOverride: "centralidp"
     # fullnameOverride: "centralidp-keycloak"
-    # postgresql:
-      # nameOverride: "centralidp-postgresql"
+    postgresql:
+      nameOverride: "centralidp"
       # fullnameOverride: "centralidp-postgresql"
 
 sharedidp:
@@ -30,8 +30,8 @@ sharedidp:
   keycloak:
     nameOverride: "sharedidp"
     # fullnameOverride: "sharedidp-keycloak"
-    # postgresql:
-      # nameOverride: "sharedidp-postgresql"
+    postgresql:
+      nameOverride: "sharedidp"
       # fullnameOverride: "sharedidp-postgresql"
 
 managed-identity-wallets:
