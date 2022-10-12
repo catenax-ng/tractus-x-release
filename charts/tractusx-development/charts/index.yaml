@@ -3,21 +3,6 @@ entries:
   registry:
   - apiVersion: v2
     appVersion: 0.2.0-M2-multi-tenancy
-    created: "2022-10-06T16:21:37.1103821+02:00"
-    dependencies:
-    - condition: enablePostgres
-      name: postgresql
-      repository: https://charts.bitnami.com/bitnami
-      version: 11.1.9
-    description: Tractus-X Digital Twin Registry Helm Chart
-    digest: 5f4d1a3a1b8a91a7de730dbe7e930c5ca79959f9e6614a1bdee3321e65356a5d
-    name: registry
-    type: application
-    urls:
-    - registry/registry-0.2.2.tgz
-    version: 0.2.2
-  - apiVersion: v2
-    appVersion: 0.2.0-M2-multi-tenancy
     created: "2022-10-06T16:21:37.100276+02:00"
     dependencies:
     - condition: enablePostgres
