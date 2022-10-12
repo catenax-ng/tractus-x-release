@@ -5,7 +5,7 @@ portal-backend:
   enabled: false
 
 bpdm:
-    enabled: true
+  enabled: true
 
 daps:
   enabled: true
