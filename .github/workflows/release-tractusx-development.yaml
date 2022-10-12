@@ -17,8 +17,7 @@
 # *
 # * SPDX-License-Identifier: Apache-2.0
 # ********************************************************************************/
-name: Release tractusx developmentchart
-
+name: Collect tractusx development helm resources 
 on:
   workflow_dispatch:
 
@@ -40,23 +39,56 @@ jobs:
         with:
           version: v3.9.1
       
-      - name: Update helm dependencies
-        id: index
+      - name: collect helm resources
+        id: collectHelm
+        uses: mikefarah/yq@master
         run: |
-          cd charts/tractusx-development
-          helm dependency update
-          helm repo index . --merge index.yaml
-          ls -la
-          cat index.yaml           
-          echo "::set-output name=chart_version::$(cat Chart.yaml | grep -e '^version' | sed 's/version: //')"
+          pwd
+          if [ ! -d charts/tractusx-development/charts ]
+          then
+              mkdir charts/tractusx-development/charts
+          fi 
+
+          for product_index_file in $(cat product-chart-index.yaml | yq '.product-charts[].url')
+          do  
+              echo "getting product chart index file at: $product_index_file"
+              curl -L -o act-product.yaml $product_index_file
+
+              for chart in $(cat act-product.yaml | yq ".entries | keys" | sed 's/- //g')
+              do 
+                  echo "processing chart: $chart"
+                  if [ ! -d charts/tractusx-development/charts/$chart ]
+                  then
+                      mkdir charts/tractusx-development/charts/$chart
+                  fi 
+
+                  for url in $(cat act-product.yaml | yq ".entries.$chart[].urls[]")
+                  do
+                      echo "processing $url"
+
+                      filename=$(basename $url)
+                      if [ ! -f charts/tractusx-development/charts/$chart/$filename ]
+                      then
+                          echo "getting file: $filename"
+                          curl -L -o charts/tractusx-development/charts/$chart/$filename $url
+                      fi
+                  done 
+              done
+          done
+
+          rm act-product.yaml
+
+          #add if needed --url string
+          helm repo index --merge charts/tractusx-development/charts/index.yaml charts
+
       
-      - name: push index file        
-        run: | 
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "build: ${{ steps.index.outputs.chart_version }}"          
-          git push
+#      - name: push index file        
+#        run: | 
+#          git config user.name github-actions
+#          git config user.email github-actions@github.com
+#          git add .
+#          git commit -m "build: ${{ steps.index.outputs.chart_version }}"          
+#          git push
 #          git add -A
 #          if ! git diff --cached --exit-code; then
 #            echo "Changes have been detected, update index file"
