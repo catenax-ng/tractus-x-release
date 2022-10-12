@@ -3,3 +3,21 @@ portal-frontend:
 
 portal-backend:
   enabled: false
+
+bpdm:
+    enabled: true
+
+daps:
+  enabled: true
+
+centralidp:
+  enabled: true
+
+sharedidp:
+  enabled: true
+
+managed-identity-wallets:
+  enabled: true
+
+sldt-registry:
+  enabled: true
