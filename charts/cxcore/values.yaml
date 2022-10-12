@@ -21,3 +21,5 @@ managed-identity-wallets:
 
 sldt-registry:
   enabled: true
+  registry:
+    idpClientId: ""
