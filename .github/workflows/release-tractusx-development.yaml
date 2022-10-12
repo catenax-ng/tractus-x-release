@@ -45,42 +45,45 @@ jobs:
         with:
           cmd: |
             pwd
-            if [ ! -d charts/tractusx-development/charts ]
+            
+            WORK_DIR="charts/tractusx-development"
+
+            if [ ! -d $WORK_DIR/charts ]
             then
-                mkdir charts/tractusx-development/charts
+                mkdir $WORK_DIR/charts
             fi 
 
-            for product_index_file in $(cat product-chart-index.yaml | yq '.product-charts[].url')
+            for product_index_file in $(cat $WORK_DIR/product-chart-index.yaml | yq '.product-charts[].url')
             do  
                 echo "getting product chart index file at: $product_index_file"
-                curl -L -o act-product.yaml $product_index_file
+                curl -L -o $WORK_DIR/act-product.yaml $product_index_file
 
-                for chart in $(cat act-product.yaml | yq ".entries | keys" | sed 's/- //g')
+                for chart in $(cat $WORK_DIR/act-product.yaml | yq ".entries | keys" | sed 's/- //g')
                 do 
                     echo "processing chart: $chart"
-                    if [ ! -d charts/tractusx-development/charts/$chart ]
+                    if [ ! -d $WORK_DIR/charts/$chart ]
                     then
-                        mkdir charts/tractusx-development/charts/$chart
+                        mkdir $WORK_DIR/charts/$chart
                     fi 
 
-                    for url in $(cat act-product.yaml | yq ".entries.$chart[].urls[]")
+                    for url in $(cat $WORK_DIR/act-product.yaml | yq ".entries.$chart[].urls[]")
                     do
                         echo "processing $url"
 
                         filename=$(basename $url)
-                        if [ ! -f charts/tractusx-development/charts/$chart/$filename ]
+                        if [ ! -f $WORK_DIR/charts/$chart/$filename ]
                         then
                             echo "getting file: $filename"
-                            curl -L -o charts/tractusx-development/charts/$chart/$filename $url
+                            curl -L -o $WORK_DIR/charts/$chart/$filename $url
                         fi
                     done 
                 done
             done
 
-            rm act-product.yaml
+            rm $WORK_DIR/act-product.yaml
 
             #add if needed --url string
-            helm repo index --merge charts/tractusx-development/charts/index.yaml charts
+            helm repo index --merge $WORK_DIR/charts/index.yaml charts
 
       
 #      - name: push index file        
