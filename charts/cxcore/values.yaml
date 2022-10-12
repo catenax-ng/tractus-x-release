@@ -12,6 +12,9 @@ portal-backend:
 
 bpdm:
   enabled: true
+  postgres:
+    enabled: true
+    nameOverride: "bpdm-postgresql"
 
 daps:
   enabled: true
