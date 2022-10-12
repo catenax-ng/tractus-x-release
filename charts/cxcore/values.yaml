@@ -4,10 +4,10 @@ portal-frontend:
 portal-backend:
   enabled: false
   pgadmin4:
-    nameOverride: "portal-backend-pgadmin4"
+    nameOverride: "portal-backend"
     # fullnameOverride: "portal-backend-pgadmin4"
   postgresql:
-    nameOverride: "portal-backend-postgresql"
+    nameOverride: "portal-backend"
     # fullnameOverride: "portal-backend-postgresql"
 
 bpdm:
@@ -19,19 +19,19 @@ daps:
 centralidp:
   enabled: true
   keycloak:
-    nameOverride: "centralidp-keycloak"
+    nameOverride: "centralidp"
     # fullnameOverride: "centralidp-keycloak"
-    postgresql:
-      nameOverride: "centralidp-postgresql"
+    # postgresql:
+      # nameOverride: "centralidp-postgresql"
       # fullnameOverride: "centralidp-postgresql"
 
 sharedidp:
   enabled: true
   keycloak:
-    nameOverride: "sharedidp-keycloak"
+    nameOverride: "sharedidp"
     # fullnameOverride: "sharedidp-keycloak"
-    postgresql:
-      nameOverride: "sharedidp-postgresql"
+    # postgresql:
+      # nameOverride: "sharedidp-postgresql"
       # fullnameOverride: "sharedidp-postgresql"
 
 managed-identity-wallets:
@@ -39,7 +39,7 @@ managed-identity-wallets:
   # vault is used if isLocal is true
   isLocal: true
   postgresql:
-    nameOverride: "managed-identity-wallets-postgresql"
+    nameOverride: "managed-identity-wallets"
     # fullnameOverride: "managed-identity-wallets-postgresql"
   # ingress can't be disabled
   certificate:
@@ -48,7 +48,7 @@ managed-identity-wallets:
 sldt-registry:
   enabled: true
   postgresql:
-    nameOverride: "sldt-registry-postgresql"
+    nameOverride: "sldt-registry"
     # fullnameOverride: "sldt-registry-postgresql"
   registry:
     # not set by default, but throws error
