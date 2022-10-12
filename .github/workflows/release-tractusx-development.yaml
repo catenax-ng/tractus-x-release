@@ -59,7 +59,9 @@ jobs:
           then
               mkdir $WORK_DIR/charts
           fi 
-
+          
+          cat $WORK_DIR/product-chart-index.yaml | yq eval '.product-charts[].url' -
+          
           for product_index_file in $(cat $WORK_DIR/product-chart-index.yaml | yq eval '.product-charts[].url' -)
           do  
               echo "getting product chart index file at: $product_index_file"
