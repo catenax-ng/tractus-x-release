@@ -40,9 +40,12 @@ jobs:
           version: v3.9.1
       
       - name: Install yq
-        run:
-          sudo apt-get update && sudo apt-get install yq
-      
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+          sudo add-apt-repository ppa:rmescandon/yq
+          sudo apt-get update
+          sudo apt-get install yq -y
+          
       - name: collect helm resources
         id: collectHelm
         run: |
