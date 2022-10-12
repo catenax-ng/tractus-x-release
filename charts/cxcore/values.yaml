@@ -18,6 +18,8 @@ sharedidp:
 
 managed-identity-wallets:
   enabled: true
+  # for testing without vault
+  isLocal: true
 
 sldt-registry:
   enabled: true
