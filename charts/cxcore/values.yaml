@@ -2,13 +2,13 @@ portal-frontend:
   enabled: true
 
 portal-backend:
-  enabled: false
+  enabled: true
   pgadmin4:
-    nameOverride: "portal-backend"
-    # fullnameOverride: "portal-backend-pgadmin4"
+    nameOverride: "portal-backend-pgadmin4"
+    # fullnameOverride: "portal-backend"
   postgresql:
-    nameOverride: "portal-backend"
-    # fullnameOverride: "portal-backend-postgresql"
+    nameOverride: "portal-backend-postgresql"
+    # fullnameOverride: "portal-backend"
 
 bpdm:
   enabled: true
@@ -19,19 +19,29 @@ daps:
 centralidp:
   enabled: true
   keycloak:
-    nameOverride: "centralidp"
-    # fullnameOverride: "centralidp-keycloak"
+    nameOverride: "centralidp-keycloak"
+    # fullnameOverride: "centralidp"
     postgresql:
-      nameOverride: "centralidp"
+      enabled: true      
+      primary:
+        name: "primary"
+      readReplicas:
+        name: "read"
+      nameOverride: "centralidp-postgresql"
       # fullnameOverride: "centralidp-postgresql"
 
 sharedidp:
   enabled: true
   keycloak:
-    nameOverride: "sharedidp"
-    # fullnameOverride: "sharedidp-keycloak"
+    nameOverride: "sharedidp-keycloak"
+    # fullnameOverride: "sharedidp"
     postgresql:
-      nameOverride: "sharedidp"
+      enabled: true
+      nameOverride: "sharedidp-postgresql"
+      primary:
+        name: "primary"
+      readReplicas:
+        name: "read"
       # fullnameOverride: "sharedidp-postgresql"
 
 managed-identity-wallets:
@@ -39,8 +49,8 @@ managed-identity-wallets:
   # vault is used if isLocal is true
   isLocal: true
   postgresql:
-    nameOverride: "managed-identity-wallets"
-    # fullnameOverride: "managed-identity-wallets-postgresql"
+    nameOverride: "managed-identity-wallets-postgresql"
+    # fullnameOverride: "managed-identity-wallets"
   # ingress can't be disabled
   certificate:
     host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
@@ -48,8 +58,8 @@ managed-identity-wallets:
 sldt-registry:
   enabled: true
   postgresql:
-    nameOverride: "sldt-registry"
-    # fullnameOverride: "sldt-registry-postgresql"
+    nameOverride: "sldt-registry-postgresql"
+    # fullnameOverride: "sldt-registry"
   registry:
     # not set by default, but throws error
     idpClientId: ""
