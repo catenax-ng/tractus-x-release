@@ -7,8 +7,8 @@ portal-backend:
     nameOverride: "portal-backend-pgadmin4"
     fullnameOverride: "portal-backend-pgadmin4"
   postgresql:
-      nameOverride: "portal-backend-postgresql"
-      fullnameOverride: "portal-backend-postgresql"
+    nameOverride: "portal-backend-postgresql"
+    fullnameOverride: "portal-backend-postgresql"
 
 bpdm:
   enabled: true
@@ -43,7 +43,7 @@ managed-identity-wallets:
     fullnameOverride: "managed-identity-wallets-postgresql"
   # ingress can't be disabled
   certificate:
-      host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
+    host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
 
 sldt-registry:
   enabled: true
