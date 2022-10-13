@@ -28,6 +28,9 @@ do
     
 done
 
-yq eval -i '.generated=now' index.yaml
+# Set actual date, yq own date function doesn't work for older version (< 4.18 )
+# yq eval -i '.generated = now' index.yaml
+NOW=$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)
+yq eval -i '.generated = $NOW' index.yaml
 
 rm act-product.yaml
