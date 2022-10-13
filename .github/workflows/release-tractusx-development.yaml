@@ -110,8 +110,10 @@ jobs:
       
       - name: Push changes
         uses: ad-m/github-push-action@master
+        env:
+          TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
-          github_token: ${{ steps.get_workflow_token.outputs.token }}
+          github_token: $TOKEN
           branch: "main"
           
 #      - name: pull-request
