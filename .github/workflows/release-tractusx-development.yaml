@@ -107,12 +107,18 @@ jobs:
         with:
           application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
           application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
-          
-      - name: pull-request
-        uses: repo-sync/pull-request@v2
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          destination_branch: "main"
           github_token: ${{ steps.get_workflow_token.outputs.token }}
+          branch: "main"
+          
+#      - name: pull-request
+#        uses: repo-sync/pull-request@v2
+#        with:
+#          destination_branch: "main"
+#          github_token: ${{ steps.get_workflow_token.outputs.token }}
 
           
 #          if ! git diff --cached --exit-code; then
