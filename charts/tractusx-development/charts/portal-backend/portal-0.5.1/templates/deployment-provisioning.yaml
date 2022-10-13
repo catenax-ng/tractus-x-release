@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.provisioning.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.provisioning.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.provisioning.name }}
+    spec:
+      containers:
+      - name: {{ .Values.provisioning.name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.provisioning.image.name }}:{{ .Values.provisioning.image.provisioningtag | default .Chart.AppVersion }}"
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: {{ .Values.portContainer }}
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Kubernetes"
+        volumeMounts:
+        - name: secrets
+          mountPath: /app/secrets
+          readOnly: true
+      volumes:
+      - name: secrets
+        secret:
+          secretName: {{ .Values.provisioning.secret.name }}

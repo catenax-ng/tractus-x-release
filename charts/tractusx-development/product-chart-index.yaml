@@ -1,3 +1,7 @@
 product-charts:
   - "name": "sldt"
-    "chart-url": "https://www.eclipse.org/tractusx/charts/index.yaml" 
+    "url": "https://www.eclipse.org/tractusx/charts/index.yaml"
+  - "name": "portal"
+    "url": "https://catenax-ng.github.io/product-portal-cd/index.yaml"
+  - "name": "managed identity wallet"
+    "url": "https://catenax-ng.github.io/product-core-managed-identity-wallets-cd/index.yaml"
