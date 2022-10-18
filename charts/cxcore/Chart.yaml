@@ -1,4 +1,4 @@
-#/********************************************************************************
+# /********************************************************************************
 # * Copyright (c) 2022 Gábor Almádi, Deutsche Telekom AG
 # * Copyright (c) 2022 Contributors to the Eclipse Foundation
 # *
@@ -20,7 +20,7 @@
 
 apiVersion: v2
 name: cxcore
-description: A Helm containing all core components of the Catena-X Automotive network
+description: A Helm Chart containing all core components of the Catena-X Automotive network
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -35,21 +35,13 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.6
+version: 0.1.7
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "release-2.0"
-
-# dependencies
-# - portal
-# - DAPS
-# - SD Hub
-# - BPDM golden record
-# - BPDM value added service
-# - TRACE-X
 
 dependencies:
   - name: portal-backend
@@ -58,8 +50,6 @@ dependencies:
     repository: https://catenax-ng.github.io/product-portal-cd/
   - name: portal
     version: 0.5.3
-    condition: portal.enabled
+    alias: portal-frontend
+    condition: portal-frontend.enabled
     repository: https://catenax-ng.github.io/product-portal-cd/
-#  - name: semantics
-#    repository: "file://./charts/semantics"
-#    version: 0.1.0

@@ -18,13 +18,15 @@
 # * SPDX-License-Identifier: Apache-2.0
 # ********************************************************************************/
 
-name: Release core Chart
+name: Release Charts
 
 on:
-  workflow_dispatch:
   push:
-    tags:
-      - 'v*'
+    # prevent unnecessary GH action runs for files outside of charts folder
+    paths:
+      - 'charts/**'
+    branches:
+      - main
 
 jobs:
   release:
@@ -56,6 +58,6 @@ jobs:
           helm dependency update
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.4.0
+        uses: helm/chart-releaser-action@v1.4.1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
