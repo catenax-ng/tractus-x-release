@@ -45,11 +45,11 @@ appVersion: "release-2.0"
 
 dependencies:
   - name: portal-backend
-    version: 0.5.3
+    version: 0.5.5
     condition: portal-backend.enabled
     repository: https://catenax-ng.github.io/product-portal-cd/
   - name: portal
-    version: 0.5.3
+    version: 0.5.5
     alias: portal-frontend
     condition: portal-frontend.enabled
     repository: https://catenax-ng.github.io/product-portal-cd/
@@ -74,7 +74,7 @@ dependencies:
   - name: managed-identity-wallets
     alias: managed-identity-wallets
     condition: managed-identity-wallets.enabled
-    version: 0.5.8
+    version: 0.5.11
     repository: "https://catenax-ng.github.io/product-core-managed-identity-wallets-cd/"
   - name: registry
     alias: sldt-registry
