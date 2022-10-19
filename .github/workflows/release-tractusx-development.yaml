@@ -17,8 +17,7 @@
 # *
 # * SPDX-License-Identifier: Apache-2.0
 # ********************************************************************************/
-name: Release tractusx developmentchart
-
+name: Collect tractusx development helm resources 
 on:
   workflow_dispatch:
 
@@ -40,24 +39,90 @@ jobs:
         with:
           version: v3.9.1
       
-      - name: Update helm dependencies
-        id: index
+      - name: Install yq
         run: |
-          cd charts/tractusx-development
-          helm dependency update
-          helm repo index . --merge index.yaml
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+          sudo add-apt-repository ppa:rmescandon/yq
+          sudo apt-get update
+          sudo apt-get install yq -y
+          
+      - name: collect helm resources
+        id: collectHelm
+        run: |
+          pwd
+
           ls -la
-          cat index.yaml           
-          echo "::set-output name=chart_version::$(cat Chart.yaml | grep -e '^version' | sed 's/version: //')"
-      
-      - name: push index file        
+          
+          WORK_DIR="charts/tractusx-development"
+
+          if [ ! -d $WORK_DIR/charts ]
+          then
+              mkdir $WORK_DIR/charts
+          fi 
+          
+          cat $WORK_DIR/product-chart-index.yaml | yq eval '.product-charts[].url' -
+          
+          for product_index_file in $(cat $WORK_DIR/product-chart-index.yaml | yq eval '.product-charts[].url' -)
+          do  
+              echo "getting product chart index file at: $product_index_file"
+              curl -L -o $WORK_DIR/act-product.yaml $product_index_file
+
+              for chart in $(cat $WORK_DIR/act-product.yaml | yq eval ".entries | keys" - | sed 's/- //g')
+              do 
+                  echo "processing chart: $chart"
+                  if [ ! -d $WORK_DIR/charts/$chart ]
+                  then
+                      mkdir $WORK_DIR/charts/$chart
+                  fi 
+
+                  for url in $(cat $WORK_DIR/act-product.yaml | yq eval ".entries.$chart[].urls[]" - )
+                  do
+                      echo "processing $url"
+
+                      filename=$(basename $url)
+                      if [ ! -f $WORK_DIR/charts/$chart/$filename ]
+                      then
+                          echo "getting file: $filename"
+                          curl -L -o $WORK_DIR/charts/$chart/$filename $url
+                      fi
+                  done 
+              done
+          done
+
+          rm $WORK_DIR/act-product.yaml
+
+          #add if needed --url string
+          helm repo index --merge $WORK_DIR/charts/index.yaml charts
+
+      - name: prepare git      
         run: | 
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "build: ${{ steps.index.outputs.chart_version }}"          
-          git push
-#          git add -A
+          git config user.name tractusx-robot
+          git config user.email tractusx-robot@github.com
+          git add -A
+          git commit -m "build: test build"          
+          
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: ${{ secrets.ORG_REPO_DISPATCH_APPID }}
+          application_private_key: ${{ secrets.ORG_REPO_DISPATCH_KEY }}
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        env:
+          TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        with:
+          github_token: $TOKEN
+          branch: "main"
+          
+#      - name: pull-request
+#        uses: repo-sync/pull-request@v2
+#        with:
+#          destination_branch: "main"
+#          github_token: ${{ steps.get_workflow_token.outputs.token }}
+
+          
 #          if ! git diff --cached --exit-code; then
 #            echo "Changes have been detected, update index file"
 #            git commit -m "build: "
@@ -67,7 +132,3 @@ jobs:
 #            echo "No changes have been detected since last build, nothing to publish"
 #          fi
           
-#      - name: Run chart-releaser
-#        uses: helm/chart-releaser-action@v1.4.0
-#        env:
-#          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

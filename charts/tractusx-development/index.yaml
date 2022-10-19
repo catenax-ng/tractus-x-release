@@ -1,0 +1,390 @@
+apiVersion: v1
+entries:
+  registry:
+    - apiVersion: v2
+      appVersion: 0.2.0-M2-multi-tenancy
+      created: "2022-10-06T08:47:32.355532775Z"
+      dependencies:
+        - condition: enablePostgres
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.1.9
+      description: Tractus-X Digital Twin Registry Helm Chart
+      digest: 5f4d1a3a1b8a91a7de730dbe7e930c5ca79959f9e6614a1bdee3321e65356a5d
+      name: registry
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/registry-0.2.2.tgz
+      version: 0.2.2
+    - apiVersion: v2
+      appVersion: 0.2.0-M2-multi-tenancy
+      created: "2022-10-06T08:47:32.347745561Z"
+      dependencies:
+        - condition: enablePostgres
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.1.9
+      description: Tractus-X Digital Twin Registry Helm Chart
+      digest: 6ce15ce36199e7504e9216c442b00e11b661c7b409062c2d746420b96804a249
+      name: registry
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/registry-0.2.1.tgz
+      version: 0.2.1
+    - apiVersion: v2
+      appVersion: 0.2.0-M1-multi-tenancy
+      created: "2022-10-06T08:47:32.341129402Z"
+      dependencies:
+        - condition: enablePostgres
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.1.9
+      description: A Helm chart for Kubernetes
+      digest: 33e8ef76522843abb507d494be7267a639d58a3fb4e6aab76b6ccabe710a034a
+      name: registry
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/registry-0.2.0.tgz
+      version: 0.2.0
+    - apiVersion: v2
+      appVersion: 0.1.0-M1-multi-tenancy
+      created: "2022-10-06T08:47:32.250098566Z"
+      dependencies:
+        - condition: enablePostgres
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.1.9
+      description: A Helm chart for Kubernetes
+      digest: 965d0e673566d12221ff342e775297dcd259218e1cf1bc9e0dd68fa1adbb618c
+      name: registry
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/registry-0.1.0.tgz
+      version: 0.1.0
+  semantic-hub:
+    - apiVersion: v2
+      appVersion: 0.1.0-M2
+      created: "2022-10-06T08:47:32.359189067Z"
+      description: Helm Chart for the Catena-X Semantic Hub Application
+      digest: 98e32c21a4e69bafb642af43312b7a440ad16fe868286311b6364670ada6a080
+      name: semantic-hub
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/semantic-hub-0.1.2.tgz
+      version: 0.1.2
+    - apiVersion: v2
+      appVersion: 0.1.0-M2
+      created: "2022-10-06T08:47:32.357974761Z"
+      description: Helm Chart for the Catena-X Semantic Hub Application
+      digest: b7d0f87b5a10be9265fe870e1418c0e54b388e974671f27193436e7ad4c3d1e9
+      name: semantic-hub
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/semantic-hub-0.1.1.tgz
+      version: 0.1.1
+    - apiVersion: v2
+      appVersion: 0.1.0-M1
+      created: "2022-10-06T08:47:32.356743706Z"
+      description: Helm Chart for the Catena-X Semantic Hub Application
+      digest: 8056fc7a7a0f8b9301e0969d27718ab87a2616633ab781a9ccdf60568aa420c8
+      name: semantic-hub
+      type: application
+      urls:
+        - http://eclipse.org/tractusx/charts/semantic-hub-0.1.0.tgz
+      version: 0.1.0
+  portal:
+    - apiVersion: v2
+      appVersion: 0.5.5
+      created: "2022-10-05T16:58:31.786064179Z"
+      description: Helm chart for Catena-X Portal frontend
+      digest: 81422c997085b0c2529ec40be5a4409f6371c84fae618487b502088a99f4d630
+      name: portal
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-0.5.5/portal-0.5.5.tgz
+      version: 0.5.5
+    - apiVersion: v2
+      appVersion: 0.5.4
+      created: "2022-09-21T18:23:58.006716411Z"
+      description: Helm chart for Catena-X Portal frontend
+      digest: e874fcae5d7adfd4dd2c6a0aa4244663696003f46af5939cbc51ca56e8a73626
+      name: portal
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-0.5.4/portal-0.5.4.tgz
+      version: 0.5.4
+    - apiVersion: v2
+      appVersion: 0.5.3
+      created: "2022-09-05T15:42:16.011301549Z"
+      description: Helm chart for Catena-X Portal frontend
+      digest: d6b57ba627271eb3af236077d4d163b334f9b9840fbe3158f582d443c46678b8
+      name: portal
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-0.5.3/portal-0.5.3.tgz
+      version: 0.5.3
+    - apiVersion: v2
+      appVersion: 0.5.2
+      created: "2022-09-01T11:34:19.624865013Z"
+      description: Helm chart for Catena-X Portal frontend
+      digest: 2b10eeddf27791a54dc4dbb922068010e7f05d807cd7a78c2d276d66e85e8abd
+      name: portal
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-0.5.2/portal-0.5.2.tgz
+      version: 0.5.2
+    - apiVersion: v2
+      appVersion: 0.5.1
+      created: "2022-08-11T16:27:48.330572586Z"
+      description: Helm chart for Catena-X Portal frontend
+      digest: f9ac87322541349b9f79d4694a621efd4d8e895b9e270ee0052e7df05f29e3e9
+      name: portal
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-0.5.1/portal-0.5.1.tgz
+      version: 0.5.1
+  portal-backend:
+    - apiVersion: v2
+      appVersion: 0.5.5
+      created: "2022-10-05T16:58:32.095256151Z"
+      dependencies:
+        - condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - condition: pgadmin4.enabled
+          name: pgadmin4
+          repository: https://helm.runix.net
+          version: 1.11.x
+      description: Helm chart for Catena-X Portal backend
+      digest: af69efeaaecc3b176f09bab822d85194ea3bd565e7dc93c261f575b81575705e
+      name: portal-backend
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-backend-0.5.5/portal-backend-0.5.5.tgz
+      version: 0.5.5
+    - apiVersion: v2
+      appVersion: 0.5.4
+      created: "2022-09-21T18:23:58.239887382Z"
+      dependencies:
+        - condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - condition: pgadmin4.enabled
+          name: pgadmin4
+          repository: https://helm.runix.net
+          version: 1.11.x
+      description: Helm chart for Catena-X Portal backend
+      digest: b63aa2e32c1377e488c8f9d5d3fc5873452c58a400a2a0947cf8c0f4ae8a25b2
+      name: portal-backend
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-backend-0.5.4/portal-backend-0.5.4.tgz
+      version: 0.5.4
+    - apiVersion: v2
+      appVersion: 0.5.3
+      created: "2022-09-05T15:42:16.173822358Z"
+      dependencies:
+        - condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - condition: pgadmin4.enabled
+          name: pgadmin4
+          repository: https://helm.runix.net
+          version: 1.11.x
+      description: Helm chart for Catena-X Portal backend
+      digest: 38d8bb3b809630d437066f9c40dbc0461e74787c5dfa09da8da97d00242c767a
+      name: portal-backend
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-backend-0.5.3/portal-backend-0.5.3.tgz
+      version: 0.5.3
+    - apiVersion: v2
+      appVersion: 0.5.2
+      created: "2022-09-01T11:34:19.984907127Z"
+      dependencies:
+        - condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - condition: pgadmin4.enabled
+          name: pgadmin4
+          repository: https://helm.runix.net
+          version: 1.x.x
+      description: Helm chart for Catena-X Portal backend
+      digest: 6f699862b2abcb1547118fc33258df1884ab344a66deba968d5c2ed0eaa59706
+      name: portal-backend
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-backend-0.5.2/portal-backend-0.5.2.tgz
+      version: 0.5.2
+    - apiVersion: v2
+      appVersion: 0.5.1
+      created: "2022-08-11T16:27:48.514607737Z"
+      dependencies:
+        - condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - condition: pgadmin4.enabled
+          name: pgadmin4
+          repository: https://helm.runix.net
+          version: 1.x.x
+      description: Helm chart for Catena-X Portal backend
+      digest: 174701ec92a4b84ea2644fdd97c1a8fa922cc406ddec7f7a82429f8decd6c284
+      name: portal-backend
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-portal-cd/releases/download/portal-backend-0.5.1/portal-backend-0.5.1.tgz
+      version: 0.5.1
+  managed-identity-wallets:
+    - apiVersion: v2
+      appVersion: 2.1.1
+      created: "2022-10-07T20:51:29.479619579Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 647434c97c2f5bb01ca952a4a5e8d30a60da74561c925d6397f68af76de025c7
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.11/managed-identity-wallets-0.5.11.tgz
+      version: 0.5.11
+    - apiVersion: v2
+      appVersion: 2.1.0
+      created: "2022-10-05T22:32:40.376982423Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: e2d3eaaf0db6b53cec01396e7fcccf0ab5911ae97319e4397df15844eb81f429
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.10/managed-identity-wallets-0.5.10.tgz
+      version: 0.5.10
+    - apiVersion: v2
+      appVersion: 2.1.0
+      created: "2022-10-05T16:47:29.771420439Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 02881f6eeb3c7d10fba7d4555f033d6aef27ae1438d9da5c93a8500bc5c6ddcf
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.9/managed-identity-wallets-0.5.9.tgz
+      version: 0.5.9
+    - apiVersion: v2
+      appVersion: 2.0.1
+      created: "2022-10-04T07:38:28.187040452Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 91962b44e365b118a544d90a820ae77aedec46e5f7c1f1a8da97ca6ed6579120
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.8/managed-identity-wallets-0.5.8.tgz
+      version: 0.5.8
+    - apiVersion: v2
+      appVersion: 2.0.1
+      created: "2022-10-01T04:29:24.317787691Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 4a30a493e3e02cc8dfdcdff09b8837e2d7d40e1310816009136389bca5577d29
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.7/managed-identity-wallets-0.5.7.tgz
+      version: 0.5.7
+    - apiVersion: v2
+      appVersion: 2.0.1
+      created: "2022-09-30T19:51:31.964334453Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 2804bd4ea2296345c83df0ce7476b90f78577902113e1adfd9a29b80febf3c37
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.6/managed-identity-wallets-0.5.6.tgz
+      version: 0.5.6
+    - apiVersion: v2
+      appVersion: 2.0.1
+      created: "2022-09-30T10:34:05.545455166Z"
+      dependencies:
+        - alias: acapypostgresql
+          condition: acapypostgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+        - alias: postgresql
+          condition: postgresql.enabled
+          name: postgresql
+          repository: https://charts.bitnami.com/bitnami
+          version: 11.x.x
+      description: Managed Identity Wallets Service
+      digest: 43dc4c590964200c8c50cabeee5f89d8bb7e0e15e03c359405b184183cd5b070
+      name: managed-identity-wallets
+      type: application
+      urls:
+        - https://github.com/catenax-ng/product-core-managed-identity-wallets-cd/releases/download/managed-identity-wallets-0.5.2/managed-identity-wallets-0.5.2.tgz
+      version: 0.5.2
+generated: "2022-10-07T20:51:29.479732377Z"
