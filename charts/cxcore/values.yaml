@@ -11,7 +11,7 @@ portal-backend:
     # fullnameOverride: "portal-backend"
 
 bpdm:
-  enabled: true
+  enabled: false
   postgres:
     enabled: true
     nameOverride: "bpdm-postgresql"
@@ -20,7 +20,7 @@ daps:
   enabled: false
 
 centralidp:
-  enabled: true
+  enabled: false
   keycloak:
     nameOverride: "centralidp-keycloak"
     # fullnameOverride: "centralidp"
@@ -34,7 +34,7 @@ centralidp:
       # fullnameOverride: "centralidp-postgresql"
 
 sharedidp:
-  enabled: true
+  enabled: false
   keycloak:
     nameOverride: "sharedidp-keycloak"
     # fullnameOverride: "sharedidp"
