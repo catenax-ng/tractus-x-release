@@ -3,3 +3,66 @@ portal-frontend:
 
 portal-backend:
   enabled: false
+  pgadmin4:
+    nameOverride: "portal-backend-pgadmin4"
+    # fullnameOverride: "portal-backend"
+  postgresql:
+    nameOverride: "portal-backend-postgresql"
+    # fullnameOverride: "portal-backend"
+
+bpdm:
+  enabled: false
+  postgres:
+    enabled: true
+    nameOverride: "bpdm-postgresql"
+
+daps:
+  enabled: false
+
+centralidp:
+  enabled: false
+  keycloak:
+    nameOverride: "centralidp-keycloak"
+    # fullnameOverride: "centralidp"
+    postgresql:
+      enabled: true
+      primary:
+        name: "primary"
+      readReplicas:
+        name: "read"
+      nameOverride: "centralidp-postgresql"
+      # fullnameOverride: "centralidp-postgresql"
+
+sharedidp:
+  enabled: false
+  keycloak:
+    nameOverride: "sharedidp-keycloak"
+    # fullnameOverride: "sharedidp"
+    postgresql:
+      enabled: true
+      nameOverride: "sharedidp-postgresql"
+      primary:
+        name: "primary"
+      readReplicas:
+        name: "read"
+      # fullnameOverride: "sharedidp-postgresql"
+
+managed-identity-wallets:
+  enabled: false
+  # vault is used if isLocal is true
+  isLocal: true
+  postgresql:
+    nameOverride: "managed-identity-wallets-postgresql"
+    # fullnameOverride: "managed-identity-wallets"
+  # ingress can't be disabled
+  certificate:
+    host: "managed-identity-wallets.devsecops-testing.demo.catena-x.net"
+
+sldt-registry:
+  enabled: false
+  postgresql:
+    nameOverride: "sldt-registry-postgresql"
+    # fullnameOverride: "sldt-registry"
+  registry:
+    # not set by default, but throws error
+    idpClientId: ""

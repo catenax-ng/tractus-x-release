@@ -55,6 +55,11 @@ jobs:
         run: |
           cd charts/cxcore
           helm repo add product-portal-cd https://catenax-ng.github.io/product-portal-cd/
+          helm repo add product-bpdm https://catenax-ng.github.io/product-bpdm/
+          helm repo add product-daps https://catenax-ng.github.io/product-DAPS/
+          helm repo add product-portal-iam https://catenax-ng.github.io/product-portal-iam/
+          helm repo add product-core-managed-identity-wallets-cd https://catenax-ng.github.io/product-core-managed-identity-wallets-cd/
+          helm repo add tractusx https://www.eclipse.org/tractusx/charts/
           helm dependency update
 
       - name: Run chart-releaser
